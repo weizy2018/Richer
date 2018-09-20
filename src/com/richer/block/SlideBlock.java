@@ -1,23 +1,22 @@
 package com.richer.block;
 
-public class BarBlock  implements Block,Cloneable{
+public class SlideBlock implements Block,Cloneable {
 
 	@Override
 	public void showBlock() {
-		System.out.print("C ");
+		
+		System.out.print("D ");
 		
 	}
-
 	@Override
 	public Block clone() {
 		try {
-			return (BarBlock) super.clone();
+			return (SlideBlock) super.clone();
 		} catch (CloneNotSupportedException e) {
-			
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
 	}
-
 
 }

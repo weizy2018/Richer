@@ -1,5 +1,7 @@
 package com.richer.menu;
 
+import com.richer.main.Game;
+
 public class MainMenu extends Menu {
 
 	@Override
@@ -10,6 +12,7 @@ public class MainMenu extends Menu {
 		System.out.println("3. Save");
 		System.out.println("4. Option");
 		System.out.println("5. Play");
+		System.out.println("6. Change Map");
 		System.out.println("0. Exit");
 		System.out.print("Your selected:");
 	}
@@ -19,11 +22,15 @@ public class MainMenu extends Menu {
 		System.out.println("\nYour selectd " + choice);
 		
 		switch(choice) {
-		case 1: this.game.setCurMenu(MenuId.PLAYERS_MENU);return true;
-		case 2: this.game.setCurMenu(MenuId.LOAD_MENU);return true;
-		case 3: this.game.setCurMenu(MenuId.SAVE_MENU);return true;
-		case 4: this.game.setCurMenu(MenuId.OPTION_MENU);return true;
-		case 5: System.out.println("Now is playing ...");return true;
+		case 1: Game.getInstance().setCurMenu(MenuId.PLAYERS_MENU);return true;
+		case 2: Game.getInstance().setCurMenu(MenuId.LOAD_MENU);return true;
+		case 3: Game.getInstance().setCurMenu(MenuId.SAVE_MENU);return true;
+		case 4: Game.getInstance().setCurMenu(MenuId.OPTION_MENU);return true;
+		case 5: System.out.println("Now is playing ...");
+				Game.getInstance().play();return true;
+		case 6: System.out.println("After change ...");
+				Game.getInstance().changeMap();
+				Game.getInstance().play();return true;
 		default: return false;
 		}
 	}

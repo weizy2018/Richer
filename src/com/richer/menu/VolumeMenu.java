@@ -1,5 +1,7 @@
 package com.richer.menu;
 
+import com.richer.main.Game;
+
 public class VolumeMenu extends Menu {
 
 	@Override
@@ -12,7 +14,7 @@ public class VolumeMenu extends Menu {
 	public boolean doChoice(int choice) {
 		System.out.println("Choice = " + choice);
 		System.out.println("Set Volume to " + choice);
-		this.game.setCurMenu(MenuId.OPTION_MENU);
+		Game.getInstance().setCurMenu(MenuId.OPTION_MENU);
 		return true;
 	}
 

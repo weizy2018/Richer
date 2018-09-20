@@ -7,9 +7,7 @@ import com.richer.main.Game;
 public abstract class Menu {
 	public abstract void show();
 	public abstract boolean doChoice(int choice);
-	public Game game;
-	public boolean process(Game game) {
-		this.game = game;	//接收一个Game对象以方便后面的操作
+	public boolean process() {
 		show();
 		int choice = getChoice();
 		return doChoice(choice);

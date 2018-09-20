@@ -1,5 +1,7 @@
 package com.richer.menu;
 
+import com.richer.main.Game;
+
 public class ResolutionMenu extends Menu {
 
 	@Override
@@ -19,7 +21,7 @@ public class ResolutionMenu extends Menu {
 		case 2: System.out.println("Set Resolution to 800 x 600");break;
 		case 3: System.out.println("Set Resoluton to 1024 x 768");break;
 		}
-		this.game.setCurMenu(MenuId.OPTION_MENU);
+		Game.getInstance().setCurMenu(MenuId.OPTION_MENU);
 		return true;
 	}
 

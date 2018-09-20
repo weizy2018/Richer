@@ -1,5 +1,7 @@
 package com.richer.menu;
 
+import com.richer.main.Game;
+
 public class PlayersMenu extends Menu {
 
 	@Override
@@ -22,7 +24,7 @@ public class PlayersMenu extends Menu {
 		if(choice!=0) {
 			System.out.println("Set number of players = " + choice);
 		}
-		this.game.setCurMenu(MenuId.MAIN_MENU);
+		Game.getInstance().setCurMenu(MenuId.MAIN_MENU);
 		return true;
 	}
 

@@ -1,5 +1,7 @@
 package com.richer.menu;
 
+import com.richer.main.Game;
+
 public class LoadMenu extends Menu {
 
 	@Override
@@ -20,9 +22,10 @@ public class LoadMenu extends Menu {
 		if(choice!=0) {
 			System.out.println("Loading record with id = " + choice);
 		}
-		this.game.setCurMenu(MenuId.MAIN_MENU);
+		Game.getInstance().setCurMenu(MenuId.MAIN_MENU);
 		
 		return true;
 	}
+	
 
 }

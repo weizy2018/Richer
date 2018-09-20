@@ -1,5 +1,7 @@
 package com.richer.menu;
 
+import com.richer.main.Game;
+
 public class SaveMenu extends Menu {
 
 	@Override
@@ -22,7 +24,7 @@ public class SaveMenu extends Menu {
 			System.out.println("Record " + choice + " was saved");
 		}
 		
-		this.game.setCurMenu(MenuId.MAIN_MENU);
+		Game.getInstance().setCurMenu(MenuId.MAIN_MENU);
 		return true;
 	}
 
