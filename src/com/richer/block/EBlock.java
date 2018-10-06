@@ -1,6 +1,12 @@
 package com.richer.block;
 
-public class EBlock implements Block,Cloneable {
+public class EBlock extends Block {
+	public EBlock() {
+		
+	}
+	public EBlock(int row, int col, int left, int right, int up, int down) {
+		super(row,col,left,right,up,down);
+	}
 
 	@Override
 	public void showBlock() {
@@ -10,13 +16,12 @@ public class EBlock implements Block,Cloneable {
 
 	@Override
 	public Block clone() {
-		try {
-			return (EBlock)super.clone();
-		} catch (CloneNotSupportedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
+		return (EBlock)super.clone();
+	}
+
+	@Override
+	public char getName() {
+		return 'E';
 	}
 
 }

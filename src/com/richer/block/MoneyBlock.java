@@ -1,6 +1,12 @@
 package com.richer.block;
 
-public class MoneyBlock implements Block,Cloneable {
+public class MoneyBlock extends Block {
+	public MoneyBlock() {
+		
+	}
+	public MoneyBlock(int row, int col, int left, int right, int up, int down) {
+		super(row,col,left,right,up,down);
+	}
 
 	@Override
 	public void showBlock() {
@@ -10,14 +16,12 @@ public class MoneyBlock implements Block,Cloneable {
 
 	@Override
 	public Block clone(){
-		
-		try {
-			return (MoneyBlock) super.clone();
-		} catch (CloneNotSupportedException e) {
-			
-			e.printStackTrace();
-		}
-		return null;
+		return (MoneyBlock) super.clone();
+	}
+
+	@Override
+	public char getName() {
+		return 'A';
 	}
 	
 }

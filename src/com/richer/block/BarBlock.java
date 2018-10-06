@@ -1,7 +1,13 @@
 package com.richer.block;
 
-public class BarBlock  implements Block,Cloneable{
-
+public class BarBlock extends Block {
+	public BarBlock() {
+		
+	}
+	public BarBlock(int row, int col, int left, int right, int up, int down) {
+		super(row,col,left,right,up,down);
+	}
+	
 	@Override
 	public void showBlock() {
 		System.out.print("C ");
@@ -10,13 +16,12 @@ public class BarBlock  implements Block,Cloneable{
 
 	@Override
 	public Block clone() {
-		try {
-			return (BarBlock) super.clone();
-		} catch (CloneNotSupportedException e) {
-			
-			e.printStackTrace();
-		}
-		return null;
+		return (BarBlock) super.clone();
+	}
+
+	@Override
+	public char getName() {
+		return 'C';
 	}
 
 

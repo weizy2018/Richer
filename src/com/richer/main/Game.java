@@ -1,12 +1,14 @@
 package com.richer.main;
 
-import com.richer.map.Map;
+import com.richer.block.BlocksId;
+import com.richer.map.MapMgr;
 import com.richer.menu.*;
 import com.richer.player.Player;
+import com.richer.prototype.BlockMgr;
+import com.richer.block.EBlock;
+import com.richer.block.FBlock;
 
 public class Game {
-	private Menu curMenu;
-	private Map map = null;
 	private Player player = null;
 	
 	private static Game game = null;
@@ -22,42 +24,34 @@ public class Game {
 	}
 	
 	public void init() {
+		MenuMgr.getMenuMgr().setMenuFactory(new MenuFactory());
 		setCurMenu(MenuId.MAIN_MENU);
+//		createMap();
+		MapMgr.getMapMgr().createMap();
 	}
 	public void run() {
 		boolean running = true;
 		while(running) {
-			running = curMenu.process();
+			running = MenuMgr.getMenuMgr().getCurMenu().process();
 		}
 	}
 	public void term() {
 		System.out.println("游戏结束");
 	}
 	public void setCurMenu(int menuId) {
-		switch(menuId) {
-		case MenuId.MAIN_MENU: curMenu = MenuMgr.getMainMenu(); break;
-		case MenuId.LOAD_MENU: curMenu = MenuMgr.getLoadMenu(); break;
-		case MenuId.SAVE_MENU: curMenu = MenuMgr.getSaveMenu(); break;
-		case MenuId.PLAYERS_MENU: curMenu = MenuMgr.getPlayersMenu(); break;
-		case MenuId.OPTION_MENU: curMenu = MenuMgr.getOptionMenu();break;
-		case MenuId.VOLUME_MENU: curMenu = MenuMgr.getVolumeMenu();break;
-		case MenuId.RESOLUTION_MENU: curMenu = MenuMgr.getResolutionMenu();break;
-		}
+//		curMenu = MenuMgr.getMenuMgr().getMenu(menuId);
+		MenuMgr.getMenuMgr().setCurMenu(menuId);
+		
 	}
 	public void play() {
-		if(map==null) {
-			map = new Map();
-//			map.createMapByBuilder();
-			map.createMapByPrototype();
-		}
-		map.showMap();
+		MapMgr.getMapMgr().getCurMap().showMap();
 	}
+	
 	public void changeMap() {
-		if(map==null) {
-			map = new Map();
-			map.createMapByPrototype();
-		}
-		map.DynamicChangeMap();
+		BlockMgr.getBlockMgr().setBlockPrototype(BlocksId.MONEY_BLOCK, new EBlock());
+		BlockMgr.getBlockMgr().setBlockPrototype(BlocksId.BAR_BLOCK, new FBlock());
+//		createMap();
+		MapMgr.getMapMgr().createMap();
 	}
 
 

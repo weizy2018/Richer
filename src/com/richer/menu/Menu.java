@@ -2,8 +2,6 @@ package com.richer.menu;
 
 import java.util.Scanner;
 
-import com.richer.main.Game;
-
 public abstract class Menu {
 	public abstract void show();
 	public abstract boolean doChoice(int choice);

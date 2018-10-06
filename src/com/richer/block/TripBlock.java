@@ -1,6 +1,12 @@
 package com.richer.block;
 
-public class TripBlock implements Block,Cloneable {
+public class TripBlock extends Block {
+	public TripBlock() {
+		
+	}
+	public TripBlock(int row, int col, int left, int right, int up, int down) {
+		super(row,col,left,right,up,down);
+	}
 
 	@Override
 	public void showBlock() {
@@ -9,14 +15,12 @@ public class TripBlock implements Block,Cloneable {
 	}
 	@Override
 	public Block clone(){
-		try {
-			return (TripBlock) super.clone();
-		} catch (CloneNotSupportedException e) {
-			
-			e.printStackTrace();
-		}
-		return null;
+		return (TripBlock) super.clone();
 		
+	}
+	@Override
+	public char getName() {
+		return 'B';
 	}
 
 }

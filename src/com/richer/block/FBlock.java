@@ -1,6 +1,6 @@
 package com.richer.block;
 
-public class FBlock implements Block,Cloneable {
+public class FBlock extends Block {
 
 	@Override
 	public void showBlock() {
@@ -10,13 +10,12 @@ public class FBlock implements Block,Cloneable {
 
 	@Override
 	public Block clone() {
-		try {
-			return (FBlock)super.clone();
-		} catch (CloneNotSupportedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
+		return (FBlock)super.clone();
+	}
+
+	@Override
+	public char getName() {
+		return 'F';
 	}
 	
 

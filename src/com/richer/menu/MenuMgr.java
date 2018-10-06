@@ -1,78 +1,41 @@
 package com.richer.menu;
 
-public abstract class MenuMgr {
-		private static Menu mainMenu = null;
-		private static Menu loadMenu = null;
-		private static Menu optionMenu = null;
-		private static Menu playersMenu = null;
-		private static Menu resolutionMenu = null;
-		private static Menu saveMenu = null;
-		private static Menu volumeMenu = null;
-		
-		private static MenuMgr menuMgr = null;
-		
-		private MenuMgr() {
-			
+public class MenuMgr {
+	private static MenuMgr menuMgr = null;
+	private AbsMenuFactory menuFactory = null;
+	private Menu menus[];
+	
+	private Menu curMenu = null;
+
+	private MenuMgr() {
+		menus = new Menu[MenuId.MENU_COUNT];
+	}
+
+	public static MenuMgr getMenuMgr() {
+		if (menuMgr == null) {
+			menuMgr = new MenuMgr();
 		}
-		public abstract Menu createMainMenu();
-		public abstract Menu createLoadMenu();
-		public abstract Menu createOptionMenu();
-		public abstract Menu createPlayersMenu();
-		public abstract Menu createResolutionMenu();
-		public abstract Menu createSaveMenu();
-		public abstract Menu createVolumeMenu();
-		
-		
-//		public MenuMgr getMenuMgr() {
-//			if(menuMgr==null) {
-//				menuMgr = new MenuMgr();
-//			}
-//			return menuMgr;
-//		}
-		
-		public static Menu getMainMenu() {
-			if(mainMenu==null) {
-				mainMenu = new MainMenu();
-			}
-			return mainMenu;
+		return menuMgr;
+	}
+	public void setMenuFactory(AbsMenuFactory menuFactory) {
+		this.menuFactory = menuFactory;
+	}
+	public Menu getMenu(int menuId) {
+		if(menuId<0 || menuId>=MenuId.MENU_COUNT) {
+			menuId = MenuId.MAIN_MENU;
 		}
-		public static Menu getLoadMenu() {
-			if(loadMenu==null) {
-				loadMenu = new LoadMenu();
-			}
-			return loadMenu;
+		if(menus[menuId]==null) {
+			menus[menuId] = this.menuFactory.createMenu(menuId);
 		}
-		public static Menu getOptionMenu() {
-			if(optionMenu==null) {
-				optionMenu = new OptionMenu();
-			}
-			return optionMenu;
-		}
-		public static Menu getPlayersMenu() {
-			if(playersMenu==null) {
-				playersMenu = new PlayersMenu();
-			}
-			return playersMenu;
-		}
-		public static Menu getResolutionMenu() {
-			if(resolutionMenu==null) {
-				resolutionMenu = new ResolutionMenu();
-			}
-			return resolutionMenu;
-		}
-		public static Menu getSaveMenu() {
-			if(saveMenu==null) {
-				saveMenu = new SaveMenu();
-			}
-			return saveMenu;
-		}
-		public static Menu getVolumeMenu() {
-			if(volumeMenu==null) {
-				volumeMenu = new VolumeMenu();
-			}
-			return volumeMenu;
-		}
-		
+		return menus[menuId];
+	}
+	public void setCurMenu(int menuId) {
+		this.curMenu = getMenu(menuId);
+	}
+	public Menu getCurMenu() {
+		return this.curMenu;
+	}
+
 }
 
 
