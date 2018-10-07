@@ -38,8 +38,8 @@ public class MapImp {
 			System.out.print(block.getName());
 			int n = i+1;
 			if(n<blocks.size()) {
-				if(blocks.get(n).getRow()!=block.getRow()) {
-					System.out.println("");//换行
+				if(blocks.get(n).getRow()!=block.getRow()) {//行尾
+					System.out.println("");
 				}else {
 					//输出空格
 					int m = blocks.get(n).getCol() - block.getCol() - 1;

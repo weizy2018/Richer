@@ -5,6 +5,8 @@ import com.richer.block.BlocksId;
 import com.richer.map.Map;
 
 public class DiffMapDirector extends MapDirector {
+	
+	@Override
 	public void buildMap() {
 		map = new Map(mapImp);
 		int[][] layout = {
