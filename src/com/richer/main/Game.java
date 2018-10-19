@@ -3,6 +3,7 @@ package com.richer.main;
 import com.richer.block.BlocksId;
 import com.richer.map.MapMgr;
 import com.richer.menu.*;
+import com.richer.out.*;
 import com.richer.player.Player;
 import com.richer.prototype.BlockMgr;
 import com.richer.block.EBlock;
@@ -26,8 +27,12 @@ public class Game {
 	public void init() {
 		MenuMgr.getMenuMgr().setMenuFactory(new MenuFactory());
 		setCurMenu(MenuId.MAIN_MENU);
-//		createMap();
 		MapMgr.getMapMgr().createMap();
+		
+		OutDevice device = new StreamDevice();
+		OutDeviceDecorator deviceDecorator = new TabDecorator(device);
+		MenuMgr.getMenuMgr().setDeviceDecorator(deviceDecorator);
+		MenuMgr.getMenuMgr().setDevice(device);
 	}
 	public void run() {
 		boolean running = true;
@@ -36,7 +41,7 @@ public class Game {
 		}
 	}
 	public void term() {
-		System.out.println("游戏结束");
+		MenuMgr.getMenuMgr().getDeviceDecorator().drawln("游戏结束");
 	}
 	public void setCurMenu(int menuId) {
 //		curMenu = MenuMgr.getMenuMgr().getMenu(menuId);

@@ -6,16 +6,24 @@ public class VolumeMenu extends Menu {
 
 	@Override
 	public void show() {
-		System.out.println("\n\tSet Volume");
-		System.out.print("Input value(0-100):");
+		MenuMgr.getMenuMgr().getDeviceDecorator().drawln("");
+		MenuMgr.getMenuMgr().getDeviceDecorator().drawln("\tSet Volume");
+		MenuMgr.getMenuMgr().getDeviceDecorator().draw("Input value(0-100):");
 	}
 
 	@Override
 	public boolean doChoice(int choice) {
-		System.out.println("Choice = " + choice);
-		System.out.println("Set Volume to " + choice);
+		MenuMgr.getMenuMgr().getDeviceDecorator().drawln("Choice = " + choice);
+		MenuMgr.getMenuMgr().getDeviceDecorator().drawln("Set Volume to " + choice);
 		Game.getInstance().setCurMenu(MenuId.OPTION_MENU);
 		return true;
+	}
+
+	@Override
+	public boolean process() {
+		show();
+		int choice = getChoice();
+		return doChoice(choice);
 	}
 
 }

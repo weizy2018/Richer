@@ -1,11 +1,17 @@
 package com.richer.menu;
 
+import com.richer.out.OutDevice;
+import com.richer.out.OutDeviceDecorator;
+
 public class MenuMgr {
 	private static MenuMgr menuMgr = null;
 	private AbsMenuFactory menuFactory = null;
 	private Menu menus[];
 	
 	private Menu curMenu = null;
+	
+	private OutDevice device = null;
+	private OutDeviceDecorator deviceDecorator = null;
 
 	private MenuMgr() {
 		menus = new Menu[MenuId.MENU_COUNT];
@@ -34,6 +40,22 @@ public class MenuMgr {
 	}
 	public Menu getCurMenu() {
 		return this.curMenu;
+	}
+
+	public OutDevice getDevice() {
+		return device;
+	}
+
+	public void setDevice(OutDevice device) {
+		this.device = device;
+	}
+
+	public OutDeviceDecorator getDeviceDecorator() {
+		return deviceDecorator;
+	}
+
+	public void setDeviceDecorator(OutDeviceDecorator deviceDecorator) {
+		this.deviceDecorator = deviceDecorator;
 	}
 
 }

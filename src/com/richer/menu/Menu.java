@@ -5,11 +5,8 @@ import java.util.Scanner;
 public abstract class Menu {
 	public abstract void show();
 	public abstract boolean doChoice(int choice);
-	public boolean process() {
-		show();
-		int choice = getChoice();
-		return doChoice(choice);
-	}
+	public abstract boolean process();
+	
 	public int getChoice() {
 		int choice = 0;
 		@SuppressWarnings("resource")
