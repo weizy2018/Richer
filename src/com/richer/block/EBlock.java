@@ -2,10 +2,11 @@ package com.richer.block;
 
 public class EBlock extends Block {
 	public EBlock() {
-		
+		this.money = 1;
 	}
 	public EBlock(int row, int col, int left, int right, int up, int down) {
 		super(row,col,left,right,up,down);
+		this.money = 1;
 	}
 
 	@Override

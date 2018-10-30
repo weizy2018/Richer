@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.ArrayList;
 
 import com.richer.block.Block;
+import com.richer.block.TripBlock;
+import com.richer.menu.MenuMgr;
+import com.richer.player.Players;
 
 public class MapImp {
 	protected List<Block> blocks;
@@ -19,41 +22,45 @@ public class MapImp {
 		return blocks.get(index);
 	}
 	public void showMap() {
-//		int count = 0;
-//		for(int r=0;r<BlocksId.MAP_ROWS;r++) {
-//			for(int c=0;c<BlocksId.MAP_COLS;c++) {
-//				Block block = blocks.get(count);
-//				if(block!=null) {
-//					System.out.print(block.getName() + " ");
-//				}else {
-//					System.out.print("  ");
-//				}
-//				count++;
-//				
-//			}
-//			System.out.println("");
-//		}
+		MenuMgr.getMenuMgr().getDeviceDecorator().draw("");
 		for(int i=0;i<blocks.size();i++) {
 			Block block = blocks.get(i);
-			System.out.print(block.getName());
+			if (!Players.getPlayersIns().position(block)) {
+				MenuMgr.getMenuMgr().getDevice().draw(" " + block.getName() + " ");
+			}
+			
 			int n = i+1;
 			if(n<blocks.size()) {
 				if(blocks.get(n).getRow()!=block.getRow()) {//行尾
-					System.out.println("");
+					MenuMgr.getMenuMgr().getDevice().drawln("");
+					MenuMgr.getMenuMgr().getDeviceDecorator().draw("");
 				}else {
 					//输出空格
 					int m = blocks.get(n).getCol() - block.getCol() - 1;
 					while(m>0) {
-						System.out.print(" ");
+						MenuMgr.getMenuMgr().getDevice().draw("   ");
 						m--;
 					}
 				}
 			}else {
-				System.out.println("");
+				MenuMgr.getMenuMgr().getDeviceDecorator().drawln("");
 			}
 		}
-
-		
 	}
-
+	public Block existBlock(int x, int y) {
+		for (int i = 0; i < blocks.size(); ++i) {
+			Block block = blocks.get(i);
+			if (x == block.getRow() && y == block.getCol()) {
+				return block;
+			}
+		}
+		return null;
+	}
+	public void setTripBlockMoney() {
+		for (Block block : blocks) {
+			if (block instanceof TripBlock) {
+				block.setMoney(-200);
+			}
+		}
+	}
 }

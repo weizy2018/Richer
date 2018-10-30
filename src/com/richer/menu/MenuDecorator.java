@@ -1,23 +1,26 @@
 package com.richer.menu;
 
 public class MenuDecorator extends Menu {
+	private Menu menu;
+	
+	public MenuDecorator(Menu menu) {
+		this.menu = menu;
+	}
 
 	@Override
 	public void show() {
-		// TODO Auto-generated method stub
+		menu.show();
 
 	}
 
 	@Override
 	public boolean doChoice(int choice) {
-		// TODO Auto-generated method stub
-		return false;
+		return menu.doChoice(choice);
 	}
 
 	@Override
 	public boolean process() {
-		// TODO Auto-generated method stub
-		return false;
+		return menu.process();
 	}
 
 }

@@ -25,7 +25,7 @@ public class SaveMenu extends Menu {
 			MenuMgr.getMenuMgr().getDeviceDecorator().drawln("Record " + choice + " was saved");
 		}
 		
-		Game.getInstance().setCurMenu(MenuId.MAIN_MENU);
+		Game.getInstance().setCurMenu(MenuId.PLAY_MENU);
 		return true;
 	}
 

@@ -28,6 +28,5 @@ public class MapMgr {
 	public Map getCurMap() {
 		return curMap;
 	}
-	
 
 }

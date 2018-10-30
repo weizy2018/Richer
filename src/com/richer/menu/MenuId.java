@@ -8,6 +8,7 @@ public class MenuId {
 	public static final int OPTION_MENU = 4;
 	public static final int VOLUME_MENU = 5;
 	public static final int RESOLUTION_MENU = 6;
+	public static final int PLAY_MENU = 7;
 	
-	public static final int MENU_COUNT = 7;
+	public static final int MENU_COUNT = 8;
 }

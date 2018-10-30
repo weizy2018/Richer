@@ -2,10 +2,11 @@ package com.richer.block;
 
 public class SlideBlock extends Block {
 	public SlideBlock() {
-		
+		this.money = 1;
 	}
 	public SlideBlock(int row, int col, int left, int right, int up, int down) {
 		super(row,col,left,right,up,down);
+		this.money = 1;
 	}
 
 	@Override

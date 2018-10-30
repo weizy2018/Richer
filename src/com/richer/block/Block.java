@@ -10,6 +10,8 @@ public abstract class Block implements Cloneable {
 	protected int up;
 	protected int down;
 	
+	protected int money = 0;
+	
 	public Block() {
 		
 	}
@@ -24,6 +26,8 @@ public abstract class Block implements Cloneable {
 	
 	
 	public abstract void showBlock();
+	public abstract char getName();
+	
 	public Block clone() {
 		Block block = null;
 		try {
@@ -33,7 +37,7 @@ public abstract class Block implements Cloneable {
 		}
 		return block;
 	}
-	public abstract char getName();
+	
 		
 	public void setPosition(int row,int col) {
 		this.row = row;
@@ -75,6 +79,12 @@ public abstract class Block implements Cloneable {
 	}
 	public void setDown(int down) {
 		this.down = down;
+	}
+	public int getMoney() {
+		return money;
+	}
+	public void setMoney(int money) {
+		this.money = money;
 	}
 	
 	

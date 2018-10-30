@@ -23,7 +23,7 @@ public class LoadMenu extends Menu {
 		if(choice!=0) {
 			MenuMgr.getMenuMgr().getDeviceDecorator().drawln("Loading record with id = " + choice);
 		}
-		Game.getInstance().setCurMenu(MenuId.MAIN_MENU);
+		Game.getInstance().setCurMenu(MenuId.PLAY_MENU);
 		
 		return true;
 	}

@@ -2,10 +2,11 @@ package com.richer.block;
 
 public class MoneyBlock extends Block {
 	public MoneyBlock() {
-		
+		this.money = 5; 
 	}
 	public MoneyBlock(int row, int col, int left, int right, int up, int down) {
 		super(row,col,left,right,up,down);
+		this.money = 5;
 	}
 
 	@Override

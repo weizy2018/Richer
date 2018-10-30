@@ -4,14 +4,13 @@ import com.richer.block.BlocksId;
 import com.richer.map.MapMgr;
 import com.richer.menu.*;
 import com.richer.out.*;
-import com.richer.player.Player;
+import com.richer.player.Direction;
+import com.richer.player.Players;
 import com.richer.prototype.BlockMgr;
 import com.richer.block.EBlock;
 import com.richer.block.FBlock;
 
 public class Game {
-	private Player player = null;
-	
 	private static Game game = null;
 	
 	private Game() {
@@ -25,7 +24,9 @@ public class Game {
 	}
 	
 	public void init() {
-		MenuMgr.getMenuMgr().setMenuFactory(new MenuFactory());
+//		AbsMenuFactory menuFacotory = new MenuFactory();
+		AbsMenuFactory menuFactory = new DecoratorMenuFactory();
+		MenuMgr.getMenuMgr().setMenuFactory(menuFactory);
 		setCurMenu(MenuId.MAIN_MENU);
 		MapMgr.getMapMgr().createMap();
 		
@@ -33,6 +34,9 @@ public class Game {
 		OutDeviceDecorator deviceDecorator = new TabDecorator(device);
 		MenuMgr.getMenuMgr().setDeviceDecorator(deviceDecorator);
 		MenuMgr.getMenuMgr().setDevice(device);
+		
+//		Players.getPlayersIns().setInDir(Direction.ARTHER);
+		Players.getPlayersIns().setInDir(Direction.NONE);
 	}
 	public void run() {
 		boolean running = true;
@@ -49,7 +53,11 @@ public class Game {
 		
 	}
 	public void play() {
-		MapMgr.getMapMgr().getCurMap().showMap();
+//		MapMgr.getMapMgr().getCurMap().showMap();
+//		players[0].execute();	//玩家
+//		for (int i = 1; i < playersCount; ++i) { //机器
+//			players[i].execute();
+//		}
 	}
 	
 	public void changeMap() {

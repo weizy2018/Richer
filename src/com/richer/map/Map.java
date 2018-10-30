@@ -18,6 +18,12 @@ public class Map {
 	public void showMap() {		//将地图打印出来
 		mapImp.showMap();
 	}
+	public Block existBlock(int x, int y) {
+		return  mapImp.existBlock(x, y);
+	}
+	public void setTripBlockMoney() {
+		this.mapImp.setTripBlockMoney();
+	}
 	
 	
 	
